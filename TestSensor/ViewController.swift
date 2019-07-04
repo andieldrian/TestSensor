@@ -20,10 +20,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         myGyroscope()
+        
     }
 
     func myGyroscope() {
-        motion.gyroUpdateInterval = 0.5
+        motion.gyroUpdateInterval = 0.1
         motion.startGyroUpdates(to: OperationQueue.current!) { (data, error) in print(data as Any)
             if let trueData = data {
                 self.view.reloadInputViews()
@@ -34,6 +35,7 @@ class ViewController: UIViewController {
                 self.yGyro.text = "y: \(Double(y).rounded(toDecimalPlaces: 3))"
                 self.zGyro.text = "z: \(Double(z).rounded(toDecimalPlaces: 3))"
                 
+                self.view.backgroundColor = UIColor.init(displayP3Red: CGFloat(x/3), green: CGFloat(y/3), blue: CGFloat(z/3), alpha: 0.8)
             }
         }
         

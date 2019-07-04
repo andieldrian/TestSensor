@@ -23,7 +23,7 @@ class SecondViewController: UIViewController {
     }
     
     func myAccelerometer() {
-        motion.accelerometerUpdateInterval = 0.5
+        motion.accelerometerUpdateInterval = 0.1
         motion.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in print("Accel :\(data as Any)")
             if let trueData = data {
                 self.view.reloadInputViews()
@@ -34,6 +34,7 @@ class SecondViewController: UIViewController {
                 self.yAccel.text = "y: \(Double(y).rounded(toDecimalPlaces: 3))"
                 self.zAccel.text = "z: \(Double(z).rounded(toDecimalPlaces: 3))"
                 
+                self.view.backgroundColor = UIColor.init(displayP3Red: CGFloat(x), green: CGFloat(y), blue: CGFloat(z), alpha: 0.8)
             }
         }
     }
